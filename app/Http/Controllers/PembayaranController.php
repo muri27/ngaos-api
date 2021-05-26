@@ -23,7 +23,7 @@ class PembayaranController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * Post cukup namaPembayaran sama totalPembayaran
+     * Post cukup namaPembayaran, totalPembayaran, idUser
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
