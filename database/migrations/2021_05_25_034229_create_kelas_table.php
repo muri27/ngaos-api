@@ -15,7 +15,8 @@ class CreateKelasTable extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('namaKelas');
+            $table->integer('idPengajar')->unique();
             $table->date('waktuMulai');
             $table->date('waktuSelesai');
             $table->boolean('isTersedia');
@@ -23,6 +24,7 @@ class CreateKelasTable extends Migration
             $table->string('deskripsiKelas');
             $table->integer('biaya');
             $table->string('linkGrupWa');
+            $table->string('fotoKelas');
             $table->timestamps();
             
         });

@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pengajar;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 
-class PengajarController extends Controller
+class PembayaranController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * Get All
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $teacher = Pengajar::all();
+    {
+        $payments = Pembayaran::all();
         return response()->json([
             'success' => 'true',
-            'data' => $teacher
+            'data' => $payments
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
-     *
+     * Post cukup namaPembayaran sama totalPembayaran
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $teacher = Pengajar::create($request -> all());
-        if($teacher){
+    {
+        $payments = Pembayaran::create($request -> all());
+        if($payments){
             return response()->json([
                 'success' => 'true',
                 'message' => 'Data Berhasil Ditambahkan'
@@ -45,17 +45,17 @@ class PengajarController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * Cari pembayaran berdasarkan id
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $teacher = Pengajar::find($id);
-        if($teacher){
+        $payments = Pembayaran::find($id);
+        if($payments){
             return response()->json([
                 'success' => 'true',
-                'data' => $teacher
+                'data' => $payments
             ]);
         } else {
             return response()->json([
@@ -67,16 +67,23 @@ class PengajarController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * Put buat ubah jenis pembayaran, bukti, sama status
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $teacher = Pengajar::find($id);
-        $teacher->update($request->all());
-        if($teacher){
+        $payments = Pembayaran::find($id);
+        $payments->update($request->all());
+        if($payments -> status == 'Belum Lunas'){
+            $payments->update(['status' => 'Pending']);
+            return response()->json([
+                'success' => 'true',
+                'message' => 'Data Berhasil Diubah'
+            ], 200);
+        }
+        else if($payments -> status == 'Pending' || $payments -> status == 'Lunas'){
             return response()->json([
                 'success' => 'true',
                 'message' => 'Data Berhasil Diubah'
@@ -87,19 +94,18 @@ class PengajarController extends Controller
                 'message' => 'Gagal Mengubah Data'
             ], 404);
         }
-        
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     * Hapus pembayaran
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    { 
-        $teacher = Pengajar::destroy($id);
-        if($teacher){
+    {
+        $payments = Pembayaran::destroy($id);
+        if($payments){
             return response()->json([
                 'success' => 'true',
                 'message' => 'Data Berhasil Dihapus'
@@ -111,22 +117,22 @@ class PengajarController extends Controller
             ], 404);
         }
     }
-    
+
      /**
-     * Search teacher by a name
-     *
+     * Search payemnts by a name
+     * Cari pembayaran berdasarkan nama
      * @param  str $name
      * @return \Illuminate\Http\Response
      */
     public function search($name)
     {
-        $teacher = Pengajar::where('namaPengajar', 'like', '%'.$name.'%')->get();
-        $teacher_count = $teacher -> count();
+        $payments = Pembayaran::where('namaPembayaran', 'like', '%'.$name.'%')->get();
+        $payments_count = $payments -> count();
         
-        if($teacher_count > 0){
+        if($payments_count > 0){
             return response()->json([
                 'success' => 'true',
-                'data' => [$teacher]
+                'data' => $payments
             ]);
         } else {
             return response()->json([

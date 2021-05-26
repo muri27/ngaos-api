@@ -10,13 +10,15 @@ class Kelas extends Model
     use HasFactory;
     
     protected $fillable = [
-        'nama',
+        'namaKelas',
+        'idPengajar',
         'waktuMulai',
         'waktuSelesai',
         'isTersedia',
         'kuotaKelas',
         'deskripsiKelas',
         'biaya',
-        'linkGrupWa'
+        'linkGrupWa',
+        'fotoKelas'
     ];
 }

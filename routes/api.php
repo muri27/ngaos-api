@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PengajarController;
+use App\Http\Controllers\PembayaranController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,8 @@ Route::prefix('v1')->group(function(){
     Route::get('/kelas/search/{name}', [KelasController::class, 'search']);
     Route::resource('/pengajar', PengajarController::class);
     Route::get('/pengajar/search/{name}', [PengajarController::class, 'search']);
+    Route::resource('/pembayaran', PembayaranController::class);
+    Route::get('/pembayaran/search/{name}', [PembayaranController::class, 'search']);
 });
 
 

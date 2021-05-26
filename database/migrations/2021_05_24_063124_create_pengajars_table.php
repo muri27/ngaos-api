@@ -15,7 +15,7 @@ class CreatePengajarsTable extends Migration
     {
         Schema::create('pengajars', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('namaPengajar');
             $table->string('alamat');
             $table->string('nomorWa');
             $table->string('email');

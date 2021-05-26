@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Pengajar;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -15,9 +16,10 @@ class KelasController extends Controller
     public function index()
     {
         $class = Kelas::all();
+        $teacher = Pengajar::all();
         return response()->json([
             'success' => 'true',
-            'data' => $class
+            'data' => [$class, $teacher]
         ]);
     }
 
@@ -119,7 +121,7 @@ class KelasController extends Controller
      */
     public function search($name)
     {
-        $class = Kelas::where('nama', 'like', '%'.$name.'%')->get();
+        $class = Kelas::where('namaKelas', 'like', '%'.$name.'%')->get();
         $class_count = $class -> count();
         
         if($class_count > 0){
