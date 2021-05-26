@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
-use App\Models\Pengajar;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -19,7 +18,7 @@ class KelasController extends Controller
         $teacher = Pengajar::all();
         return response()->json([
             'success' => 'true',
-            'data' => [$class, $teacher]
+            'data' => $class
         ]);
     }
 

@@ -126,7 +126,7 @@ class PengajarController extends Controller
         if($teacher_count > 0){
             return response()->json([
                 'success' => 'true',
-                'data' => [$teacher]
+                'data' => $teacher
             ]);
         } else {
             return response()->json([
