@@ -19,6 +19,11 @@ class Kelas extends Model
         'deskripsiKelas',
         'biaya',
         'linkGrupWa',
-        'fotoKelas'
+        'fotoKelas',
+        'idUser'
+    ];
+
+    protected $casts = [
+        'idUser' => 'array'
     ];
 }

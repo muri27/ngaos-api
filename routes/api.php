@@ -23,6 +23,7 @@ Route::prefix('v1')->group(function(){
     Route::get('/pengajar/search/{name}', [PengajarController::class, 'search']);
     Route::resource('/pembayaran', PembayaranController::class);
     Route::get('/pembayaran/search/{name}', [PembayaranController::class, 'search']);
+    Route::resource('/diikuti', DiikutiController::class);
 });
 
 

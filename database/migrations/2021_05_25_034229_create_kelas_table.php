@@ -25,6 +25,7 @@ class CreateKelasTable extends Migration
             $table->integer('biaya');
             $table->string('linkGrupWa');
             $table->string('fotoKelas');
+            $table->json('idUser')->nullable();
             $table->timestamps();
             
         });
