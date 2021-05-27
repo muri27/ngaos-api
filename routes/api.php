@@ -3,6 +3,7 @@
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PengajarController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\DiikutiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
