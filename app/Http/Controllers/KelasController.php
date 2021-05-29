@@ -15,6 +15,10 @@ class KelasController extends Controller
     public function index()
     {
         $class = Kelas::all();
+<<<<<<< HEAD
+=======
+        $teacher = Pengajar::all();
+>>>>>>> 29284657195ff0ebd477c3f5c7e341c89586b290
         return response()->json([
             'success' => 'true',
             'data' => $class
