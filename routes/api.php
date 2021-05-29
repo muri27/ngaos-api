@@ -3,10 +3,7 @@
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PengajarController;
 use App\Http\Controllers\PembayaranController;
-<<<<<<< HEAD
 use App\Http\Controllers\DiikutiController;
-=======
->>>>>>> 29284657195ff0ebd477c3f5c7e341c89586b290
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,10 +24,7 @@ Route::prefix('v1')->group(function(){
     Route::get('/pengajar/search/{name}', [PengajarController::class, 'search']);
     Route::resource('/pembayaran', PembayaranController::class);
     Route::get('/pembayaran/search/{name}', [PembayaranController::class, 'search']);
-<<<<<<< HEAD
     Route::resource('/diikuti', DiikutiController::class);
-=======
->>>>>>> 29284657195ff0ebd477c3f5c7e341c89586b290
 });
 
 
