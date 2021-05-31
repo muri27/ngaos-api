@@ -65,10 +65,10 @@ return [
         
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'db4free.net'),
+            'host' => env('DB_HOST', 'freedb.tech'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'pad_ngaos'),
-            'username' => env('DB_USERNAME', 'muri27'),
+            'database' => env('DB_DATABASE', 'freedbtech_ngaos'),
+            'username' => env('DB_USERNAME', 'freedbtech_muri'),
             'password' => env('DB_PASSWORD', 'jupiter123'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
